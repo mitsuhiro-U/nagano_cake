@@ -1,0 +1,23 @@
+
+<h3>商品詳細</h3>
+
+<%= attachment_image_tag @item, :image, :fill, 180, 90 %>
+
+    <rabel>商品名</rabel>
+    <%= @item.name %><br>
+
+    <rabel>商品説明</rabel>
+    <%= @item.introduction %><br>
+    
+    <rabel>ジャンル</rabel>
+    <%= @item.genre.name %><br>
+    <rabel>税込価格<br>(税抜価格)</rabel>
+    <%= "#{(@item.price * 1.08).floor}" + "(#{@item.price})" + "円" %><br>
+    <rabel>販売ステータス</rabel>
+    <% if @item.is_active %>
+      販売中
+    <% else %>   
+    　販売停止中
+    <% end %>
+
+    <%= link_to "編集する", edit_admin_item_path(@item) %>
