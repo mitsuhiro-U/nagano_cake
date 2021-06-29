@@ -1,16 +1,11 @@
 Rails.application.routes.draw do
   namespace :admin do
+    get '/' => "homes#top", as: 'top'
     resources :customers, except: [:new, :create, :destroy]
-  end
-  namespace :admin do
     resources :genres, except: [:new, :show, :destroy]
-  end
-  namespace :admin do
     resources :items, except: [:destroy]
   end
-  namespace :admin do
-    get '/' => "homes#top", as: 'top'
-  end
+ 
   
   devise_for :admin, controllers: {
     sessions: 'admin/sessions'
