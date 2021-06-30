@@ -24,13 +24,13 @@ class ApplicationController < ActionController::Base
     end
     
     def after_sign_out_path_for(resource)
-        case resoure
-        when Admin
+        #byebug
+        case resource
+        when :admin
             new_admin_session_path
-        when Customer
+        when :customer
             top_path
         end
-        
     end
     
 end
