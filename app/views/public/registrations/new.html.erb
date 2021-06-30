@@ -1,7 +1,8 @@
-<p>会員ID</p>
-<%= @customer.id %>
-<br>
-<%= form_with model: @customer, url: admin_customer_path(@customer), local: true do |f| %>
+<h3>新規会員</h3>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "public/shared/error_messages", resource: resource %>
+
 
   <div class="field">
     <p>名前</p>
@@ -10,7 +11,7 @@
     <%= f.label :first_name, "(名)" %>
     <%= f.text_field :first_name %>
   </div>
-  
+  <br>
   <div class="field">
     <p>フリガナ</p>
     <%= f.label :last_name_kana, "(セイ)" %>
@@ -18,7 +19,12 @@
     <%= f.label :first_name_kana, "(メイ)" %>
     <%= f.text_field :first_name_kana %>
   </div>
-  
+  <br>
+  <div class="field">
+    <p>メールアドレス</p>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+  <br>
   <div class="field">
     <p>郵便番号(ハイフンなし)</p>
     <%= f.text_field :postal_code %>
@@ -33,19 +39,22 @@
     <p>電話番号(ハイフンなし)</p>
     <%= f.text_field :telephone_number %>
   </div>
-  
+
   <div class="field">
-    <p>メールアドレス</p>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <p>パスワード(6文字以上)</p>
+    <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
-  
+
   <div class="field">
-    <p>会員ステータス</p>
-    <%= f.radio_button :is_active, true, checked: true %>有効<%= f.radio_button :is_active, false %>退会
+    <p>パスワード(確認用)</p>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
-  
+
   <div class="actions">
-    <%= f.submit "変更を保存" %>
+    <%= f.submit "新規登録" %>
   </div>
-  
 <% end %>
+
+<h3>既に登録済みの方</h3>
+<p><%= link_to "こちら", new_customer_session_path %>　からログインしてください。</p>
+

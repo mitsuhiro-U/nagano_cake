@@ -1,14 +1,14 @@
 
-<h3><%= "@costomer.last_name" + "@costomer.first-name" %>さんの会員詳細</h3>
+<h3><%= "#{@customer.last_name}" + "#{@customer.first_name}" %>さんの会員詳細</h3>
 
 <rabel>会員ID</rabel>
 <%= @customer.id %>
 <br>
 <rabel>氏名</rabel>
-<%= "@costomer.last_name  " + "@costomer.first-name" %>
+<%= "#{@customer.last_name}  " + "#{@customer.first_name}" %>
 <br>
 <rabel>フリガナ</rabel>
-<%= "@costomer.last_name_kana  " + "@costomer.first-name_kana" %>
+<%= "#{@customer.last_name_kana}  " + "#{@customer.first_name_kana}" %>
 <br>
 <rabel>郵便番号</rabel>
 <%= @customer.postal_code %>

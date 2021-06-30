@@ -25,10 +25,12 @@ Rails.application.routes.draw do
     get 'items/index'
     get 'items/show'
   end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
+  
+  scope module: :public do
+    get '/' => "homes#top", as: 'top'
+    get '/about' => "homes#about", as: 'about'
   end
+  
   namespace :admin do
     get '/' => "homes#top", as: 'top'
     resources :customers, except: [:new, :create, :destroy]
@@ -41,7 +43,10 @@ Rails.application.routes.draw do
     sessions: 'admin/sessions'
   }
   
-  devise_for :customers
+  devise_for :customer, controllers: {
+    sessions: 'public/sessions',
+    registrations: 'public/registrations'
+  }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
 end
