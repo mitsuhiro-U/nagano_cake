@@ -21,14 +21,12 @@ Rails.application.routes.draw do
     get 'customers/withdrawal'
     get 'customers/withdrawal_update'
   end
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
-  end
+  
   
   scope module: :public do
     get '/' => "homes#top", as: 'top'
     get '/about' => "homes#about", as: 'about'
+    resources :items, only: [:index, :show]
   end
   
   namespace :admin do

@@ -1,2 +1,16 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-5">
+            <%= attachment_image_tag @item,:image, :fill, 180, 90 %><br>
+        </div>
+        <div class="col-lg-7">
+            <%= @item.name %><br>
+            <%= @item.introduction %><br>
+            <br>
+            <%= "¥" + "#{(@item.price * 1.08).floor}" + "(税込)" %>
+            
+            
+        </div>
+    </div>
+</div>

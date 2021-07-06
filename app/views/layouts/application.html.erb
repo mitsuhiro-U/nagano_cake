@@ -10,29 +10,65 @@
   </head>
 
   <body>
-    <% if customer_signed_in? %> 
-      <a>LOGO</a>
-      <a>商品一覧</a>
-      <a>注文履歴一覧</a>
-      <a>ジャンル一覧</a>
-      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-     
-    <% elsif admin_signed_in? %>
-      <a>LOGO</a>
-      <%= link_to "商品一覧", admin_items_path %>
-      <%= link_to "会員一覧", admin_customers_path %>
-      <%= link_to "注文履歴一覧", admin_top_path %>
-      <%= link_to "ジャンル一覧", admin_genres_path %>
-      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+          
+        <%= link_to top_path, method: :get do %>
+          <i class="fas fa-birthday-cake fa-5x navbar-brand"></i>
+        <% end %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="#navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+          <% if customer_signed_in? %> 
+            <li class="btn btn-outline-secondary nav-item mr-5">
+              商品一覧
+            </li>
+            <li class="btn btn-outline-secondary nav-item mr-5">
+              注文履歴一覧
+            </li>
+            <li class="btn btn-outline-secondary nav-item mr-5">
+              ジャンル一覧
+              </li>
+            <li class="btn btn-outline-secondary nav-item mr-5">
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+            </li>
+          <% elsif admin_signed_in? %>
+            <li class="btn btn-outline-secondary nav-item mr-5">
+              <%= link_to "商品一覧", admin_items_path %>
+            </li>
+            <li class="btn btn-outline-secondary nav-item mr-5">
+              <%= link_to "会員一覧", admin_customers_path %>
+            </li>
+            <li class="btn btn-outline-secondary nav-item mr-5">
+              <%= link_to "注文履歴一覧", admin_top_path %>
+            </li>
+            <li class="btn btn-outline-secondary nav-item mr-5">
+              <%= link_to "ジャンル一覧", admin_genres_path %>
+            </li>
+            <li class="btn btn-outline-secondary nav-item mr-5">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+            </li>
+          <% else %>
+            <li class="btn btn-outline-secondary nav-item mr-5">
+              <%= link_to "About", about_path %>
+            </li>
+            <li class="btn btn-outline-secondary nav-item mr-5">
+              <%= link_to "商品一覧", items_path %>
+            </li>
+            <li class="btn btn-outline-secondary nav-item mr-5">
+              <%= link_to "新規登録", new_customer_registration_path %>
+            </li>
+            <li class="btn btn-outline-secondary nav-item mr-5">
+              <%= link_to "ログイン", new_customer_session_path %>
+            </li class="btn btn-outline-secondary nav-item mr-5">
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
       
-    <% else %>
-     <a>LOGO</a>
-     <a>About</a>
-     <a>商品一覧</a>
-     <a>新規登録</a>
-     <a>ログイン</a>
-      
-    <% end %>
     
     <%= yield %>
   </body>
