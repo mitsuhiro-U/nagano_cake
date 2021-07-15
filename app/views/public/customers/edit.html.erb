@@ -1,2 +1,37 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+
+<div class="container">
+    <h3>会員情報編集</h3>
+    
+    <%= form_with model: @customer, url:customers_path, local:true do |f| %>
+    <div class="row">
+    <p>氏名</p>
+    <%= f.text_field :last_name %>
+    <%= f.text_field :first_name %>
+    </div>
+    <div class="row">
+    <p>フリガナ</p>
+    <%= f.text_field :last_name_kana %>
+    <%= f.text_field :first_name_kana %>
+    </div>
+    <div class="row">
+    <p>郵便番号</p>
+    <%= f.text_field :postal_code %>
+    </div>
+    <div class="row">
+    <p>住所</p>
+    <%= f.text_field :address %>
+    </div>
+    <div class="row">
+    <p>電話番号</p>
+    <%= f.text_field :telephone_number %>
+    </div>
+    <div class="row">
+    <p>メールアドレス</p>
+    <%= f.text_field :email %>
+    </div>
+    <div class="row">
+    <%= f.submit "編集内容を保存" %>
+    <%= link_to "退会する", withdrawal_path %>
+    </div>
+    <% end %>
+</div>

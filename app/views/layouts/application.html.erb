@@ -22,15 +22,18 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
           <% if customer_signed_in? %> 
-            <li class="btn btn-outline-secondary nav-item mr-5">
-              商品一覧
+            <li class=" nav-item mr-5">
+              ようこそ、<%= current_customer.last_name %>さん！
             </li>
             <li class="btn btn-outline-secondary nav-item mr-5">
-              注文履歴一覧
+              <%= link_to "マイページ", customers_path %>
             </li>
             <li class="btn btn-outline-secondary nav-item mr-5">
-              ジャンル一覧
-              </li>
+              <%= link_to "商品一覧", items_path %>
+            </li>
+            <li class="btn btn-outline-secondary nav-item mr-5">
+              <%= link_to "カート", cart_items_path %>
+            </li>
             <li class="btn btn-outline-secondary nav-item mr-5">
             <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
             </li>
